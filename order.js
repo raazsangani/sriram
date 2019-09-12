@@ -1,4 +1,58 @@
-    placeorder(req, res, next) {
+//batch instance    
+batchname: String,
+    stockentry: {
+        type: Number,
+        default: 0
+    },
+    stocksold: Number,
+    entrydate: {
+        type: Date,
+        default: Date.now
+    },
+    leaveover: {
+        type: Number,
+    },
+    available: {
+        type: Boolean,
+        default: false
+    }
+
+// saleinstance
+instancename : String,
+pricelist : [{
+    type: Schema.Types.ObjectId,
+    ref: 'pricelist'
+  }],
+show: {
+    type: Boolean,
+    default: false
+},
+salevolume: Number
+
+
+//product instance
+
+  productname: String,
+  saleinstance: [{
+    type: Schema.Types.ObjectId,
+    ref: 'saleinstance'
+  }],
+  totalstock: Number,  
+  available: {
+    type: Boolean,
+    default: false
+  },
+  batches: [{
+    type: Schema.Types.ObjectId,
+    ref: 'batch'
+  }],
+  pricingorder: [{
+    type: String
+  }]
+
+
+
+placeorder(req, res, next) {
         const userid = req.user._id;
         const orderprops = req.body.orderprops;
         const myorders = new Orders(orderprops);
