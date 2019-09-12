@@ -50,6 +50,43 @@ salevolume: Number
     type: String
   }]
 
+//small variation
+// var decrement = 10000;
+var decrement = 2000;
+const batch = [{
+    id: 1,
+    stockentry: 450
+}, {
+    id: 2,
+    stockentry: 450
+}, {
+    id: 3,
+    stockentry: 1000
+}];
+
+
+var difference = decrement;
+for (i = 0; difference > 0; i++) {
+    if(i < batch.length ) {
+    const batchid = batch[i].id;
+    const stock = batch[i].stockentry;
+    if (stock < decrement) {
+         difference = difference - stock;
+        console.log(difference);
+    }
+    if(stock == 0){
+
+    }
+    if(batch.length == 0){
+
+    }
+    if (stock > decrement) {
+        console.log("hi mukesh");
+        difference = 0;
+        return;
+    }
+}
+}
 
 
 placeorder(req, res, next) {
